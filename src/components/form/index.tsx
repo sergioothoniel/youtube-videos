@@ -48,7 +48,7 @@ const Form = ({validFunction, animated}: InputProps) =>{
     }
 
     return(
-        <FormContainer onSubmit={handleSubmit} className={animated ? "animated" : "none"}>
+        <FormContainer onSubmit={handleSubmit} className={animated ? "animated" : "none"} role="form">
             <div className="inputContainer">
                 <input type="text" placeholder="Pesquisar" onChange={handleChange}/>
                 {invalidSearch && <span>*Digite algum texto para buscar</span>}
