@@ -1,6 +1,9 @@
 import { FormContainer } from "./style";
 import { AiOutlineSearch } from "react-icons/ai";
 import { HTMLAttributes, useState } from "react";
+import { APIResponse, useVideosList } from "../../providers/videosList";
+import { toast } from 'react-toastify';
+import api from "../../services";
 
 
 interface InputProps extends HTMLAttributes<HTMLElement>{
@@ -9,8 +12,9 @@ interface InputProps extends HTMLAttributes<HTMLElement>{
 }
 
 const Form = ({validFunction, animated}: InputProps) =>{   
+
+    const {setObjectApiResponse, textSearched, setTextSearched} = useVideosList()    
     
-    const [textSearched, setTextSearched] = useState<string>('')
     const [invalidSearch, setInvalidSearch] = useState<boolean>(false)
 
     const handleSubmit = (event: React.FormEvent<HTMLFormElement>) =>{
@@ -21,9 +25,17 @@ const Form = ({validFunction, animated}: InputProps) =>{
         }
         else{
             validFunction(true)
-            console.log(textSearched)
-        }     
-                      
+            setObjectApiResponse({} as APIResponse)
+            api.get(`search?part=id,snippet&q=${textSearched}&key=${process.env.REACT_APP_GOOGLE_SECRET_KEY}`)
+            .then(response => {
+                setObjectApiResponse(response.data)
+            })
+            .catch(error => {
+                validFunction(false)
+                console.log(error)
+                toast.error('Número de requisições máximo atingido')               
+            })            
+        }                
     } 
 
     const handleChange = (event: React.FormEvent<HTMLInputElement>) =>{
@@ -47,7 +59,6 @@ const Form = ({validFunction, animated}: InputProps) =>{
                 <button type="submit">Buscar</button>
             </div>
         </FormContainer>
-
     )
 }
 
