@@ -6,7 +6,7 @@ import Home from "../pages/home"
 const Routers = () =>{
     return(
         <Switch>          
-            <Route path="/">
+            <Route exact path="/">
                 <Home/>
             </Route>
 
