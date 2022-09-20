@@ -5,10 +5,10 @@ import { useState } from "react";
 
 interface InputProps extends HTMLAttributes<HTMLElement>{
     validFunction: (value: boolean) => void
-    name: string
+    animated: boolean
 }
 
-const Form = ({validFunction, name}: InputProps) =>{    
+const Form = ({validFunction, animated}: InputProps) =>{    
 
     const handleSubmit = (event: React.FormEvent<HTMLFormElement>) =>{
         event.preventDefault()
@@ -17,7 +17,7 @@ const Form = ({validFunction, name}: InputProps) =>{
     } 
 
     return(
-        <FormContainer onSubmit={handleSubmit} name={name}>
+        <FormContainer onSubmit={handleSubmit} className={animated ? "animated" : "none"}>
             <input type="text" placeholder="Pesquisar" />
 
             <div className="buttonContainer">

@@ -6,16 +6,22 @@ height: 40px;
 justify-content: center;
 position: absolute;
 width: 65vw;
-top: ${props => props.name === "moveToTop" ? "5vh" : "50vh"};
+top: ${props => props.className === "animated" ? "5vh" : "50vh"};
 left: 18vw;
-animation-name: ${props => props.name === "moveToTop" && "formAnimation"};
+animation-name: ${props => props.className === "animated" && "formAnimation"};
 animation-duration: 0.5s;
 z-index: 100;
 
 input{
     width: 100%;
-    border: 1px solid #bebebe;
+    border: 1px solid #bebebe; 
+    padding-left: 10px;   
+
+    :focus{
+        background-color: #F0F8FF;
+    }
 }
+
 
 svg{
     width: 20%;
@@ -47,5 +53,18 @@ button{
   to {top: 5vh}
 }
 
+
+@media (max-width: 768px){
+    width: 90vw;
+    left: 5vw;
+
+    .buttonContainer{
+        width: 23vw;
+    }
+
+    svg{
+        margin-right: 2px;
+    }
+}
 
 `

@@ -15,11 +15,10 @@ const Home = () =>{
     }, [validSearch])
 
     return(
-        <HomeContainer>
-            <div className="logoInputContainer" >
-                <Logo name={validSearch ? "animated" : "none"}/>
-                <Form validFunction={setValidSearch} name={validSearch ? "moveToTop" : "none"}/>
-            </div>
+        <HomeContainer>            
+            <Logo animated={validSearch && true}/>
+            <Form validFunction={setValidSearch} animated={validSearch && true }/> 
+     
                         
         </HomeContainer>
     )

@@ -2,12 +2,12 @@ import { LogoContainer } from "./style"
 import { HTMLAttributes } from "react"
 
 interface InputProps extends HTMLAttributes<HTMLElement>{
-    name: string
+    animated: boolean
 }
 
-const Logo = ({name}: InputProps) => {
+const Logo = ({animated}: InputProps) => {
     return(
-        <LogoContainer className={name}>
+        <LogoContainer className={animated ? "animated" : "none"}>
             YouTube <span>API</span>
         </LogoContainer>
     )

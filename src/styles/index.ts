@@ -47,6 +47,11 @@ table {
 	border-spacing: 0;
 }   
 
+textarea:focus, input:focus {
+	box-shadow: 0 0 0 0;
+	outline: 0;
+}
+
 
 `
 
