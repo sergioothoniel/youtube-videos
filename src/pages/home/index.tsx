@@ -9,7 +9,7 @@ const Home = () =>{
     const [validSearch, setValidSearch] = useState<boolean>(false)
 
     const dispatch = useDispatch()
-    const responseList = useSelector(state=>state.listResponse)
+    // const responseList = useSelector(state=>state.listResponse)
 
     useEffect(()=>{
         if(validSearch){
