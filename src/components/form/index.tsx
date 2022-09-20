@@ -2,6 +2,7 @@ import { FormContainer } from "./style";
 import { AiOutlineSearch } from "react-icons/ai";
 import { HTMLAttributes, useState } from "react";
 import { APIResponse, useVideosList } from "../../providers/videosList";
+import { toast } from 'react-toastify';
 import api from "../../services";
 
 
@@ -12,9 +13,8 @@ interface InputProps extends HTMLAttributes<HTMLElement>{
 
 const Form = ({validFunction, animated}: InputProps) =>{   
 
-    const {setObjectApiResponse} = useVideosList()
+    const {setObjectApiResponse, textSearched, setTextSearched} = useVideosList()    
     
-    const [textSearched, setTextSearched] = useState<string>('')
     const [invalidSearch, setInvalidSearch] = useState<boolean>(false)
 
     const handleSubmit = (event: React.FormEvent<HTMLFormElement>) =>{
@@ -31,7 +31,9 @@ const Form = ({validFunction, animated}: InputProps) =>{
                 setObjectApiResponse(response.data)
             })
             .catch(error => {
+                validFunction(false)
                 console.log(error)
+                toast.error('Número de requisições máximo atingido')               
             })            
         }                
     } 
@@ -57,7 +59,6 @@ const Form = ({validFunction, animated}: InputProps) =>{
                 <button type="submit">Buscar</button>
             </div>
         </FormContainer>
-
     )
 }
 

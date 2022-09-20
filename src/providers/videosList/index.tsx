@@ -18,6 +18,8 @@ interface VideosListProviderData{
     setObjectApiResponse: (objectApiResponse: APIResponse) => void
     nextPageToken: string   
     prevPageToken: string 
+    textSearched: string
+    setTextSearched: (value: string) => void
 }
 
 interface VideosListProps{
@@ -31,16 +33,17 @@ export const VideosListProvider = ({children}: VideosListProps) => {
     const [objectApiResponse, setObjectApiResponse] = useState<APIResponse>({} as APIResponse)
     const [nextPageToken, setNextPageToken] = useState<string>('')
     const [prevPageToken, setPrevPageToken] = useState<string>('')
+    const [textSearched, setTextSearched] = useState<string>('')
     
     useEffect(()=>{
         
-        objectApiResponse.nextPageToken && setNextPageToken(objectApiResponse.nextPageToken)
-        objectApiResponse.prevPageToken && setPrevPageToken(objectApiResponse.prevPageToken)        
+        objectApiResponse.nextPageToken ? setNextPageToken(objectApiResponse.nextPageToken) : setNextPageToken('')
+        objectApiResponse.prevPageToken ? setPrevPageToken(objectApiResponse.prevPageToken) : setPrevPageToken('')       
 
     }, [objectApiResponse])
 
     return (
-        <VideosListContext.Provider value={{objectApiResponse, setObjectApiResponse, nextPageToken, prevPageToken}}>
+        <VideosListContext.Provider value={{objectApiResponse, setObjectApiResponse, nextPageToken, prevPageToken, setTextSearched, textSearched}}>
             {children}
         </VideosListContext.Provider>
     )
