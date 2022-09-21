@@ -3,10 +3,10 @@ import styled from "styled-components";
 export const LogoContainer = styled.h1`
 color: red;
 font-family: 'Dangrek', cursive;
-font-size: ${props => props.className === "animated" ? "2vw" : "10vw"};
+font-size: ${props => props.className === "animated" || props.className === "static" ? "2vw" : "10vw"};
 position: absolute;
-top: ${props => props.className === "animated" ? "6vh" : "13vh"};
-left: ${props => props.className === "animated" ? "6vw" : "27vw"};
+top: ${props => props.className === "animated" || props.className === "static" ? "6vh" : "13vh"};
+left: ${props => props.className === "animated" || props.className === "static" ? "6vw" : "27vw"};
 animation-name: ${props => props.className === "animated" && "titleAnimation"};
 animation-duration: 0.5s;
 display: flex;

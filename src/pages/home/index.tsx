@@ -43,14 +43,14 @@ const Home = () =>{
 
     const {objectApiResponse, nextPageToken, prevPageToken, setObjectApiResponse, textSearched} = useVideosList()
 
-    const [validSearch, setValidSearch] = useState<boolean>(false)
-    const [videosList, setVideosList] = useState<any[]>([] as any[])    
+    const [animatedCompClassName, setAnimatedCompClassName] = useState<string>('')
+    const [videosList, setVideosList] = useState<any[]>([] as any[])     
 
     useEffect(()=>{
 
         if(textSearched){
-            setValidSearch(true)
-            setVideosList(objectApiResponse.items)
+            setAnimatedCompClassName('static')
+            setVideosList(objectApiResponse.items)            
         }
 
     }, [])
@@ -73,7 +73,7 @@ const Home = () =>{
             setObjectApiResponse(response.data)
         })
         .catch(error => {
-            setValidSearch(false)
+            setAnimatedCompClassName('')
             console.log(error)
             toast.error('Número de requisições máximo atingido') 
         })               
@@ -81,10 +81,10 @@ const Home = () =>{
 
     return(
         <HomeContainer>            
-            <Logo animated={validSearch && true}/>
-            <Form validFunction={setValidSearch} animated={validSearch && true }/> 
+            <Logo animatedClassName={animatedCompClassName}/>
+            <Form animatedClassNameFunction={setAnimatedCompClassName} animatedClassName={animatedCompClassName}/> 
 
-            {validSearch && 
+            {animatedCompClassName && 
                 (videosList ?         
                     <div className="videosListContainer">
                         {videosList.map(({snippet, id}: IItemAPIResponse) =>{
