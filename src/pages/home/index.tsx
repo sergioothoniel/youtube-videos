@@ -13,8 +13,8 @@ import { toast } from "react-toastify";
 
 interface IThumbnail{
     url: string
-    width: number
-    height: number
+    width?: number
+    height?: number
 }
 
 interface IItemAPIResponse{   
@@ -44,7 +44,16 @@ const Home = () =>{
     const {objectApiResponse, nextPageToken, prevPageToken, setObjectApiResponse, textSearched} = useVideosList()
 
     const [validSearch, setValidSearch] = useState<boolean>(false)
-    const [videosList, setVideosList] = useState<any[]>([] as any[])
+    const [videosList, setVideosList] = useState<any[]>([] as any[])    
+
+    useEffect(()=>{
+
+        if(textSearched){
+            setValidSearch(true)
+            setVideosList(objectApiResponse.items)
+        }
+
+    }, [])
 
     useEffect(()=>{
 
@@ -81,7 +90,7 @@ const Home = () =>{
                         {videosList.map(({snippet, id}: IItemAPIResponse) =>{
                             return(
                                 <CardVideo title={snippet.title.replaceAll("&quot;", "").replaceAll("&#39;", "")} description={snippet.description} 
-                                thumbnailURL={snippet.thumbnails.default.url} videoId={id.videoId} key={id.videoId}/>
+                                thumbnailURL={snippet.thumbnails.medium ? snippet.thumbnails.medium.url : snippet.thumbnails.default.url} videoId={id.videoId} key={id.videoId}/>
                             )
                         })                                  
                     }
