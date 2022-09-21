@@ -25,7 +25,8 @@ const Form = ({validFunction, animated}: InputProps) =>{
         }
         else{
             validFunction(true)
-            setObjectApiResponse({} as APIResponse)
+            setObjectApiResponse({} as APIResponse)            
+
             api.get(`search?part=id,snippet&q=${textSearched}&key=${process.env.REACT_APP_GOOGLE_SECRET_KEY}`)
             .then(response => {
                 setObjectApiResponse(response.data)

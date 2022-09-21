@@ -1,5 +1,7 @@
 import { CardContainer } from "./style";
 import {HTMLAttributes} from "react";
+import Button from '@mui/material/Button';
+import { useHistory } from "react-router-dom";
 
 interface InputProps extends HTMLAttributes<HTMLElement>{
     videoId: string
@@ -9,6 +11,13 @@ interface InputProps extends HTMLAttributes<HTMLElement>{
 }
 
 const CardVideo = ({videoId, title, description, thumbnailURL}: InputProps) => {
+
+    const history = useHistory()
+
+    const handleClick = () => {
+        history.push('/details')
+    }
+
     return(
         <CardContainer>
             <figure>
@@ -19,6 +28,8 @@ const CardVideo = ({videoId, title, description, thumbnailURL}: InputProps) => {
                 <h2>{title}</h2>
                 <p>{description}</p>
             </div>
+
+            <Button variant="contained" onClick={handleClick}>Ver Mais</Button>
 
         </CardContainer>
     )
