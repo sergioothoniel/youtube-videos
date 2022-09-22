@@ -6,7 +6,7 @@ height: 60px;
 justify-content: center;
 position: absolute;
 width: 65vw;
-top: ${props => props.className === "animated" ? "5vh" : "50vh"};
+top: ${props => props.className === "animated" || props.className === "static" ? "5vh" : "50vh"};
 left: 18vw;
 animation-name: ${props => props.className === "animated" && "formAnimation"};
 animation-duration: 0.5s;
