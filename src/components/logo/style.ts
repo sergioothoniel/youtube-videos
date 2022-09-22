@@ -32,25 +32,11 @@ span{
   }
 }
 
-@media (max-width: 768px){
-  position: static;
-  justify-content: center;
-  align-items: center;
-  height: 20vh;
-  margin-top: 50px;
-  font-size: ${props => props.className === "animated" && "0"};  
+@media (max-width: 500px){
 
-  @keyframes titleAnimation {
-    from{
-      font-size: 10vw; 
-      margin-top: 50px;
-    }
-
-    to {
-      font-size: 0;  
-      margin-top: 0;    
-    }
-  }
+  font-size: ${props => props.className === "static" && "medium"};
+  left: ${props => props.className === "static" && "37vw"};
+  
 }
 
 `

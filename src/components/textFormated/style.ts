@@ -5,7 +5,9 @@ display: flex;
 justify-content: center;
 
     p{
-        color: #424242
+        color: #424242;
+        max-width: 100%;
+        word-wrap: break-word;
     }
 
     .hideText{
@@ -24,7 +26,8 @@ justify-content: center;
         cursor: pointer;
     }
 
-
- 
+@media (max-width: 450px){
+    flex-direction: column;
+} 
 
 `

@@ -1,4 +1,6 @@
 import { createContext, ReactNode, useContext, useState, useEffect } from "react"
+import { IItemAPIResponse } from "../../pages/home"
+
 
 export interface APIResponse{
     kind: string
@@ -10,7 +12,7 @@ export interface APIResponse{
         totalResults: number
         resultsPerPage: number
     }
-    items: any[]
+    items: IItemAPIResponse[]
 }
 
 interface VideosListProviderData{

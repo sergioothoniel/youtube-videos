@@ -14,7 +14,7 @@ export const HomeContainer = styled.div`
     .navigationOptions{
         display: flex;
         justify-content: center;
-        width: 30%;
+        width: 50%;
         align-self: center;
         justify-content: space-evenly;
         margin: 35px 0 80px 0;
@@ -25,6 +25,7 @@ export const HomeContainer = styled.div`
             justify-content: center;
             height: 35px;
             cursor: pointer;
+            width: max-content;
         }
     }
 }
@@ -39,11 +40,15 @@ export const HomeContainer = styled.div`
 }
 
 @media (max-width: 780px){
-
-    .videosListContainer, .navigationOptions{
-        width: 100vw;
-    }
     
+    .videosListContainer{
+        width: 100vw;
+
+        .navigationOptions{
+            width: 100vw;
+        }
+    }    
+   
 }
 
 `

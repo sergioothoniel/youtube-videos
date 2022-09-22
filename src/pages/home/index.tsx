@@ -16,9 +16,9 @@ interface IThumbnail{
     height?: number
 }
 
-interface IItemAPIResponse{   
+export interface IItemAPIResponse{   
     id: {
-        kind?: string
+        kind: string
         videoId: string
     }
     snippet: {
@@ -43,21 +43,23 @@ const Home = () =>{
     const {objectApiResponse, nextPageToken, prevPageToken, setObjectApiResponse, textSearched} = useVideosList()
 
     const [animatedCompClassName, setAnimatedCompClassName] = useState<string>('')
-    const [videosList, setVideosList] = useState<any[]>([] as any[])     
+    const [videosList, setVideosList] = useState<IItemAPIResponse[]>([] as IItemAPIResponse[])     
 
     useEffect(()=>{
 
         if(textSearched){
-            setAnimatedCompClassName('static')
-            setVideosList(objectApiResponse.items)            
+            setAnimatedCompClassName('static')            
+            setVideosList(objectApiResponse.items.filter(item => item.id.kind === "youtube#video"))  //exclude youtube channels         
         }
 
     }, [])
 
     useEffect(()=>{
-
-        const list = objectApiResponse.items
-        setVideosList(list)   
+        
+        if(objectApiResponse.items){
+            const list = objectApiResponse.items.filter(item => item.id.kind === "youtube#video")  //exclude youtube channels
+            setVideosList(list)   
+        }
 
     }, [objectApiResponse])
 
@@ -84,7 +86,7 @@ const Home = () =>{
             <Form animatedClassNameFunction={setAnimatedCompClassName} animatedClassName={animatedCompClassName}/> 
 
             {animatedCompClassName && 
-                (videosList ?         
+                (videosList[0] ?         
                     <div className="videosListContainer">
                         {videosList.map(({snippet, id}: IItemAPIResponse, index: number) =>{
                             return(

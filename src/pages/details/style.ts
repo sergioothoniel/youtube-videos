@@ -40,5 +40,25 @@ export const DetailsPageContainer = styled.div`
     button{
         margin-bottom: 40px;
     }
+
+    @media (max-width: 770px){
+
+        .videoStatistics{
+            width: 70%;            
+        }
+
+        h1{
+            font-size: 1rem;
+        }
+    }
+
+    @media (max-width: 450px){
+
+        .videoStatistics{
+            width: 90%;
+            font-size: small;
+        }
+    }
+   
 }
 `
