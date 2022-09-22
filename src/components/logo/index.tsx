@@ -3,15 +3,15 @@ import { HTMLAttributes } from "react"
 import { useHistory } from "react-router-dom"
 
 interface InputProps extends HTMLAttributes<HTMLElement>{
-    animated: boolean
+    animatedClassName: string
 }
 
-const Logo = ({animated}: InputProps) => {
+const Logo = ({animatedClassName}: InputProps) => {
 
     const history = useHistory()
 
     return(
-        <LogoContainer className={animated ? "animated" : "none"} onClick={()=>history.push('/')}>
+        <LogoContainer className={animatedClassName} onClick={()=>history.push('/')}>
             YouTube <span>API</span>
         </LogoContainer>
     )
