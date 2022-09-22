@@ -6,7 +6,7 @@ import Logo from "../../components/logo";
 import VideoPlayer from "../../components/videoPlayer";
 import Button from '@mui/material/Button';
 import { AiOutlineLike } from "react-icons/ai";
-import TextFormated from "../../components/textFormated";
+import TextFormated from "../../components/textFormated"
 
 interface IVideoDataUpdated {
     snippet: {
