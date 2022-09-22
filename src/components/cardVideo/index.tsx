@@ -15,7 +15,7 @@ const CardVideo = ({videoId, title, description, thumbnailURL}: InputProps) => {
     const history = useHistory()
 
     const handleClick = () => {
-        history.push('/details')
+        history.push(`/details/${videoId}`)
     }
 
     return(

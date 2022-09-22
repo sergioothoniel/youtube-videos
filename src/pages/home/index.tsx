@@ -5,8 +5,7 @@ import { useEffect, useState} from "react";
 import { APIResponse, useVideosList } from "../../providers/videosList";
 import CardVideo from "../../components/cardVideo";
 import CircularProgress from '@mui/material/CircularProgress';
-import { AiOutlineRight } from "react-icons/ai";
-import { AiOutlineLeft } from "react-icons/ai";
+import { AiOutlineRight, AiOutlineLeft } from "react-icons/ai";
 import api from "../../services";
 import { toast } from "react-toastify";
 
@@ -87,10 +86,10 @@ const Home = () =>{
             {animatedCompClassName && 
                 (videosList ?         
                     <div className="videosListContainer">
-                        {videosList.map(({snippet, id}: IItemAPIResponse) =>{
+                        {videosList.map(({snippet, id}: IItemAPIResponse, index: number) =>{
                             return(
                                 <CardVideo title={snippet.title.replaceAll("&quot;", "").replaceAll("&#39;", "")} description={snippet.description} 
-                                thumbnailURL={snippet.thumbnails.medium ? snippet.thumbnails.medium.url : snippet.thumbnails.default.url} videoId={id.videoId} key={id.videoId}/>
+                                thumbnailURL={snippet.thumbnails.medium ? snippet.thumbnails.medium.url : snippet.thumbnails.default.url} videoId={id.videoId} key={index}/>
                             )
                         })                                  
                     }

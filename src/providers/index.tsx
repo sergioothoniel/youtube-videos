@@ -1,4 +1,5 @@
 import { ReactNode } from "react"
+import { VideoDetailProvider } from "./videoDetail"
 import { VideosListProvider } from "./videosList"
 
 
@@ -9,7 +10,9 @@ interface ProvidersProps{
 const Provider = ({children}: ProvidersProps) => {
     return(
         <VideosListProvider>
-            {children}
+            <VideoDetailProvider>
+                {children}
+            </VideoDetailProvider>            
         </VideosListProvider>
     )
 }

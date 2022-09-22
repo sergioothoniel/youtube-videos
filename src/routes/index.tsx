@@ -11,7 +11,7 @@ const Routers = () =>{
                 <Home/>
             </Route>
 
-            <Route path="/details">
+            <Route path="/details/:videoId">
                 <Details/>
             </Route>
 
