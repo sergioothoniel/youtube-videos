@@ -60,11 +60,14 @@ const Home = () =>{
             const list = objectApiResponse.items.filter(item => item.id.kind === "youtube#video")  //exclude youtube channels
             setVideosList(list)   
         }
+        else{
+            setVideosList([] as IItemAPIResponse[])
+        }
 
     }, [objectApiResponse])
 
     const handlePageNavigation = (direction: string) => {
-        setObjectApiResponse({} as APIResponse)
+        setVideosList([] as IItemAPIResponse[])
 
         let token: string
         direction === "next" ? token = nextPageToken : token = prevPageToken

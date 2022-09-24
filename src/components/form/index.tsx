@@ -55,10 +55,10 @@ const Form = ({animatedClassNameFunction, animatedClassName}: InputProps) =>{
                 {invalidSearch && <span>*Digite algum texto para buscar</span>}
             </div>           
 
-            <div className="buttonContainer">
+            <button className="buttonContainer">
                 <AiOutlineSearch/>
-                <button type="submit">Buscar</button>
-            </div>
+                <span>Buscar</span>
+            </button>
         </FormContainer>
     )
 }

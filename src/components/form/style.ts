@@ -27,14 +27,13 @@ input{
     width: 100%;
     display: flex;
     flex-direction: column;
-}
 
-span{
-    color: #f53a3a;
-    font-size: small;
-    margin-top: 5px;
+    span{
+        color: #f53a3a;
+        font-size: small;
+        margin-top: 5px;
+    }
 }
-
 
 svg{
     width: 20%;
@@ -42,14 +41,7 @@ svg{
     margin-right: 5px;
 }
 
-button{
-    border: none;
-    background: none;
-    margin: 0;
-    padding: 0;
-    height: 100%;
-    cursor: pointer;
-}
+
 
 .buttonContainer{
     border: 1px solid #bebebe;
@@ -59,7 +51,19 @@ button{
     cursor: pointer;  
     background-color: #f5f5f5;
     width: 15%;
-    max-height: 38px;
+    max-height: 40px;
+
+    span{
+        border: none;
+        background: none;
+        margin: 0;
+        padding: 0;
+        height: 100%;
+        cursor: pointer;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+    }
 }
 
 @keyframes formAnimation {
