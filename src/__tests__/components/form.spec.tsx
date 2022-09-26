@@ -4,7 +4,7 @@ import Form from "../../components/form";
 describe("Form Component", () => {
 	test("should be able to render a Form component", () => {
         
-		render(<Form validFunction={console.log} animated={false}/>)
+		render(<Form animatedClassNameFunction={console.log} animatedClassName={''}/>)
 		
 		const formElement = screen.getByRole("form")
 		const inputElement = screen.getByPlaceholderText("Pesquisar")
