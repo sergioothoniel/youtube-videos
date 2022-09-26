@@ -8,10 +8,15 @@ interface InputProps extends HTMLAttributes<HTMLElement>{
 
 const Logo = ({animatedClassName}: InputProps) => {
 
-    const history = useHistory()
+    const history = useHistory()    
+
+    const handleLogoClick = () => {
+        history.push('/')
+        window.location.reload()
+    }
 
     return(
-        <LogoContainer className={animatedClassName} onClick={()=>history.push('/')}>
+        <LogoContainer className={animatedClassName} onClick={handleLogoClick}>
             YouTube <span>API</span>
         </LogoContainer>
     )

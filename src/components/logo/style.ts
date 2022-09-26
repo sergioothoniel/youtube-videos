@@ -11,6 +11,7 @@ animation-name: ${props => props.className === "animated" && "titleAnimation"};
 animation-duration: 0.5s;
 display: flex;
 align-items: center;
+cursor: pointer;
 
 span{
   font-family: inherit;
