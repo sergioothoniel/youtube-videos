@@ -1,46 +1,43 @@
-# Getting Started with Create React App
+# YouTube API
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+## Sobre
 
-## Available Scripts
+Website responsivo criado para consumir a API do YouTube, listando os vídeos retornados e podendo exibir determinado vídeo selecionado, além de mostrar seus dados e descrição.
 
-In the project directory, you can run:
+<br />
 
-### `yarn start`
+## Funcionamento
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
+A partir de uma palavra ou um conjunto de palavras inseridas no campo de busca (componente input), a plataforma realiza um requisição em um dos endpoints da API do YouTube que retorna uma lista de canais e vídeos paginada com os resultados. Nesta requisição são enviados como parâmetros de requisiçao o texto inserido no campo de busca, substituindo pelo caractere "+", e uma chave secreta obtida no Google Cloud. O retorno é filtrado para a exclusão dos canais e são exibidos apenas os vídeos contidos na lista. Na resposta da requisição também são retornados tokens de páginas anterior e/ou próxima, os quais são utilizados como parêmetros para a mesma requisição ao passar de página. 
 
-The page will reload if you make edits.\
-You will also see any lint errors in the console.
+Em cada resultado, é exibido um botão "Ver Mais" que, ao ser clicado, realiza uma requisição para outro endpoint da API do YouTube enviando, como parâmetro de requisição, o videoID para o vídeo selecionado, obtido na requisição anterior, e novamente a chave secreta do Google. Como resposta da requisição, são exibidos o vídeo, incorporado à página pelo elemento HTML "iframe" com o videoID selecionado, seu título, dados estatísticos e sua descrição.
 
-### `yarn test`
+No plano simples do Google Cloud, estes endpoints possuem um limite determinado de resquisições.
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+<br />
 
-### `yarn build`
+## Links
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+- <a name="deploy-vercel" href="#" target="_blank">Deploy</a>
+- <a name="repository" href="#" target="_blank">Repositório</a>
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+<br />
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+## Como Rodar Localmente
 
-### `yarn eject`
+- Faça o clone deste repositório para sua máquina local
+- Copie o arquivo ".env.example" para a raiz do projeto alterando a extensão para apenas ".env" e insira sua chave secreta, obtida no Google Cloud, na variável <b>REACT_APP_GOOGLE_SECRET_KEY</b> contida neste arquivo
+- Execute o comando `yarn` no terminal para instalar as dependências
+  
+- Executando o comando `yarn start`, o app é instanciado no local host e pode ser acessado pela porta 3000
+- Executando o comando `yarn test`, os testes unitários são executados no terminal
+- Executando o comando `yarn build`, uma pasta é criado com aquivos HTML, CSS e Javascript para posterior hospedagem
 
-**Note: this is a one-way operation. Once you `eject`, you can’t go back!**
+<br />
 
-If you aren’t satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+## Tecnologias
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you’re on your own.
-
-You don’t have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn’t feel obligated to use this feature. However we understand that this tool wouldn’t be useful if you couldn’t customize it when you are ready for it.
-
-## Learn More
-
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
-
-To learn React, check out the [React documentation](https://reactjs.org/).
+- <a name="react" href="https://pt-br.reactjs.org/" target="_blank">React</a>
+- <a name="ts" href="https://www.typescriptlang.org/" target="_blank">TypeScript</a>
+- <a name="materialUI" href="https://mui.com/pt/" target="_blank">Material UI</a>
+- <a name="styledComponents" href="https://styled-components.com/" target="_blank">Styled-Components</a>
