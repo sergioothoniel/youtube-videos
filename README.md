@@ -25,7 +25,7 @@ No plano simples do Google Cloud, estes endpoints possuem um limite determinado 
 
 <br />
 
-## Como Rodar Localmente
+## Como rodar localmente
 
 - Faça o clone deste repositório para sua máquina local
 - Copie o arquivo ".env.example" para a raiz do projeto alterando a extensão para apenas ".env" e insira sua chave secreta, obtida no Google Cloud, na variável <b>REACT_APP_GOOGLE_SECRET_KEY</b> contida neste arquivo
