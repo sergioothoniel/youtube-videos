@@ -18,8 +18,8 @@ No plano simples do Google Cloud, estes endpoints possuem um limite determinado 
 
 ## Links
 
-- <a name="deploy-vercel" href="#" target="_blank">Deploy</a>
-- <a name="repository" href="#" target="_blank">Repositório</a>
+- <a name="deploy-vercel" href="https://youtube-videos-delta.vercel.app/" target="_blank">Deploy</a>
+- <a name="repository" href="https://github.com/sergioothoniel/youtube-videos" target="_blank">Repositório</a>
 
 <br />
 
@@ -41,3 +41,8 @@ No plano simples do Google Cloud, estes endpoints possuem um limite determinado 
 - <a name="ts" href="https://www.typescriptlang.org/" target="_blank">TypeScript</a>
 - <a name="materialUI" href="https://mui.com/pt/" target="_blank">Material UI</a>
 - <a name="styledComponents" href="https://styled-components.com/" target="_blank">Styled-Components</a>
+
+<br/>
+<br/>
+
+Desenvolvido por [Sérgio Othoniel](https://github.com/sergioothoniel)
