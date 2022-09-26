@@ -2,24 +2,23 @@ import Form from "../../components/form";
 import Logo from "../../components/logo";
 import { HomeContainer } from "./style";
 import { useEffect, useState} from "react";
-import { APIResponse, useVideosList } from "../../providers/videosList";
+import { useVideosList } from "../../providers/videosList";
 import CardVideo from "../../components/cardVideo";
 import CircularProgress from '@mui/material/CircularProgress';
-import { AiOutlineRight } from "react-icons/ai";
-import { AiOutlineLeft } from "react-icons/ai";
+import { AiOutlineRight, AiOutlineLeft } from "react-icons/ai";
 import api from "../../services";
 import { toast } from "react-toastify";
 
 
 interface IThumbnail{
     url: string
-    width: number
-    height: number
+    width?: number
+    height?: number
 }
 
-interface IItemAPIResponse{   
+export interface IItemAPIResponse{   
     id: {
-        kind?: string
+        kind: string
         videoId: string
     }
     snippet: {
@@ -43,18 +42,28 @@ const Home = () =>{
 
     const {objectApiResponse, nextPageToken, prevPageToken, setObjectApiResponse, textSearched} = useVideosList()
 
-    const [validSearch, setValidSearch] = useState<boolean>(false)
-    const [videosList, setVideosList] = useState<any[]>([] as any[])
+    const [animatedCompClassName, setAnimatedCompClassName] = useState<string>('')
+    const [videosList, setVideosList] = useState<IItemAPIResponse[]>([] as IItemAPIResponse[])     
 
     useEffect(()=>{
+        
+        if(objectApiResponse.items){
 
-        const list = objectApiResponse.items
-        setVideosList(list)   
+            if(textSearched){
+                setAnimatedCompClassName('static')
+            }
+
+            const list = objectApiResponse.items.filter(item => item.id.kind === "youtube#video")  //exclude youtube channels
+            setVideosList(list)   
+        }
+        else{
+            setVideosList([] as IItemAPIResponse[])
+        }
 
     }, [objectApiResponse])
 
     const handlePageNavigation = (direction: string) => {
-        setObjectApiResponse({} as APIResponse)
+        setVideosList([] as IItemAPIResponse[])
 
         let token: string
         direction === "next" ? token = nextPageToken : token = prevPageToken
@@ -64,7 +73,7 @@ const Home = () =>{
             setObjectApiResponse(response.data)
         })
         .catch(error => {
-            setValidSearch(false)
+            setAnimatedCompClassName('')
             console.log(error)
             toast.error('Número de requisições máximo atingido') 
         })               
@@ -72,16 +81,16 @@ const Home = () =>{
 
     return(
         <HomeContainer>            
-            <Logo animated={validSearch && true}/>
-            <Form validFunction={setValidSearch} animated={validSearch && true }/> 
+            <Logo animatedClassName={animatedCompClassName}/>
+            <Form animatedClassNameFunction={setAnimatedCompClassName} animatedClassName={animatedCompClassName}/> 
 
-            {validSearch && 
-                (videosList ?         
+            {animatedCompClassName && 
+                (videosList[0] ?         
                     <div className="videosListContainer">
-                        {videosList.map(({snippet, id}: IItemAPIResponse) =>{
+                        {videosList.map(({snippet, id}: IItemAPIResponse, index: number) =>{
                             return(
                                 <CardVideo title={snippet.title.replaceAll("&quot;", "").replaceAll("&#39;", "")} description={snippet.description} 
-                                thumbnailURL={snippet.thumbnails.default.url} videoId={id.videoId} key={id.videoId}/>
+                                thumbnailURL={snippet.thumbnails.medium ? snippet.thumbnails.medium.url : snippet.thumbnails.default.url} videoId={id.videoId} key={index}/>
                             )
                         })                                  
                     }

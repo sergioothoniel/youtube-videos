@@ -7,11 +7,11 @@ import api from "../../services";
 
 
 interface InputProps extends HTMLAttributes<HTMLElement>{
-    validFunction: (value: boolean) => void
-    animated: boolean
+    animatedClassNameFunction: (value: string) => void
+    animatedClassName: string
 }
 
-const Form = ({validFunction, animated}: InputProps) =>{   
+const Form = ({animatedClassNameFunction, animatedClassName}: InputProps) =>{   
 
     const {setObjectApiResponse, textSearched, setTextSearched} = useVideosList()    
     
@@ -24,14 +24,19 @@ const Form = ({validFunction, animated}: InputProps) =>{
             setInvalidSearch(true)
         }
         else{
-            validFunction(true)
-            setObjectApiResponse({} as APIResponse)
+
+            if(!animatedClassName){
+                animatedClassNameFunction('animated')
+            }
+            
+            setObjectApiResponse({} as APIResponse)            
+
             api.get(`search?part=id,snippet&q=${textSearched}&key=${process.env.REACT_APP_GOOGLE_SECRET_KEY}`)
             .then(response => {
                 setObjectApiResponse(response.data)
             })
             .catch(error => {
-                validFunction(false)
+                animatedClassNameFunction('')
                 console.log(error)
                 toast.error('Número de requisições máximo atingido')               
             })            
@@ -48,16 +53,16 @@ const Form = ({validFunction, animated}: InputProps) =>{
     }
 
     return(
-        <FormContainer onSubmit={handleSubmit} className={animated ? "animated" : "none"} role="form">
+        <FormContainer onSubmit={handleSubmit} className={animatedClassName} role="form">
             <div className="inputContainer">
                 <input type="text" placeholder="Pesquisar" onChange={handleChange}/>
                 {invalidSearch && <span>*Digite algum texto para buscar</span>}
             </div>           
 
-            <div className="buttonContainer">
+            <button className="buttonContainer">
                 <AiOutlineSearch/>
-                <button type="submit">Buscar</button>
-            </div>
+                <span>Buscar</span>
+            </button>
         </FormContainer>
     )
 }

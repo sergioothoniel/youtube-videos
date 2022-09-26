@@ -1,13 +1,22 @@
 import { LogoContainer } from "./style"
 import { HTMLAttributes } from "react"
+import { useHistory } from "react-router-dom"
 
 interface InputProps extends HTMLAttributes<HTMLElement>{
-    animated: boolean
+    animatedClassName: string
 }
 
-const Logo = ({animated}: InputProps) => {
+const Logo = ({animatedClassName}: InputProps) => {
+
+    const history = useHistory()    
+
+    const handleLogoClick = () => {
+        history.push('/')
+        window.location.reload()
+    }
+
     return(
-        <LogoContainer className={animated ? "animated" : "none"}>
+        <LogoContainer className={animatedClassName} onClick={handleLogoClick}>
             YouTube <span>API</span>
         </LogoContainer>
     )
