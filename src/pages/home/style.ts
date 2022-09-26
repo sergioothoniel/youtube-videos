@@ -26,6 +26,9 @@ export const HomeContainer = styled.div`
             height: 35px;
             cursor: pointer;
             width: max-content;
+            background-color: #ccdbe2;
+            border: none;
+            border-radius: 5px;
         }
     }
 }

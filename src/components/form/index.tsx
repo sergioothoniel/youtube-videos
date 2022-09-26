@@ -24,7 +24,11 @@ const Form = ({animatedClassNameFunction, animatedClassName}: InputProps) =>{
             setInvalidSearch(true)
         }
         else{
-            animatedClassNameFunction('animated')
+
+            if(!animatedClassName){
+                animatedClassNameFunction('animated')
+            }
+            
             setObjectApiResponse({} as APIResponse)            
 
             api.get(`search?part=id,snippet&q=${textSearched}&key=${process.env.REACT_APP_GOOGLE_SECRET_KEY}`)

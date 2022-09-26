@@ -2,7 +2,7 @@ import Form from "../../components/form";
 import Logo from "../../components/logo";
 import { HomeContainer } from "./style";
 import { useEffect, useState} from "react";
-import { APIResponse, useVideosList } from "../../providers/videosList";
+import { useVideosList } from "../../providers/videosList";
 import CardVideo from "../../components/cardVideo";
 import CircularProgress from '@mui/material/CircularProgress';
 import { AiOutlineRight, AiOutlineLeft } from "react-icons/ai";
@@ -46,17 +46,13 @@ const Home = () =>{
     const [videosList, setVideosList] = useState<IItemAPIResponse[]>([] as IItemAPIResponse[])     
 
     useEffect(()=>{
-
-        if(textSearched){
-            setAnimatedCompClassName('static')            
-            setVideosList(objectApiResponse.items.filter(item => item.id.kind === "youtube#video"))  //exclude youtube channels         
-        }
-
-    }, [])
-
-    useEffect(()=>{
         
         if(objectApiResponse.items){
+
+            if(textSearched){
+                setAnimatedCompClassName('static')
+            }
+
             const list = objectApiResponse.items.filter(item => item.id.kind === "youtube#video")  //exclude youtube channels
             setVideosList(list)   
         }
