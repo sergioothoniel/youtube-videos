@@ -2,7 +2,7 @@ import styled from "styled-components";
 
 export const FormContainer = styled.form`
 display: flex;
-height: 60px;
+flex-direction: column;
 justify-content: center;
 position: absolute;
 width: 65vw;
@@ -17,22 +17,15 @@ input{
     border: 1px solid #bebebe; 
     padding: 0 0 0 10px ;
     height: 38px;
+    border-right: none;
 
     :focus{
         background-color: #F0F8FF;
     }
 }
 
-.inputContainer{
-    width: 100%;
-    display: flex;
-    flex-direction: column;
-
-    span{
-        color: #f53a3a;
-        font-size: small;
-        margin-top: 5px;
-    }
+.inputContainer{    
+    display: flex;      
 }
 
 svg{
@@ -40,8 +33,6 @@ svg{
     height: 55%;
     margin-right: 5px;
 }
-
-
 
 .buttonContainer{
     border: 1px solid #bebebe;
@@ -51,7 +42,11 @@ svg{
     cursor: pointer;  
     background-color: #f5f5f5;
     width: 15%;
-    max-height: 40px;
+    height: 40px;
+
+    button{
+        height: 100%;
+    }
 
     span{
         border: none;
@@ -63,8 +58,15 @@ svg{
         display: flex;
         justify-content: center;
         align-items: center;
+        color: initial;
     }
 }
+
+span{
+        color: #f53a3a;
+        font-size: small;
+        margin-top: 5px;
+    }
 
 @keyframes formAnimation {
   from {top: 50vh;}
@@ -75,6 +77,10 @@ svg{
 @media (max-width: 768px){
     width: 90vw;
     left: 5vw;
+
+    input{
+        border-radius: 0;
+    }
 
     .buttonContainer{
         width: 23vw;

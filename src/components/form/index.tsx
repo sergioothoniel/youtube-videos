@@ -56,13 +56,14 @@ const Form = ({animatedClassNameFunction, animatedClassName}: InputProps) =>{
         <FormContainer onSubmit={handleSubmit} className={animatedClassName} role="form">
             <div className="inputContainer">
                 <input type="text" placeholder="Pesquisar" onChange={handleChange}/>
-                {invalidSearch && <span>*Digite algum texto para buscar</span>}
-            </div>           
-
-            <button className="buttonContainer">
-                <AiOutlineSearch/>
-                <span>Buscar</span>
-            </button>
+                
+                <button className="buttonContainer">
+                    <AiOutlineSearch/>
+                    <span>Buscar</span>
+                </button>
+            </div>         
+            
+            {invalidSearch && <span>*Digite algum texto para buscar</span>}
         </FormContainer>
     )
 }
