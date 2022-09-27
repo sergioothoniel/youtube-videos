@@ -20,7 +20,7 @@ No plano simples do Google Cloud, estes endpoints possuem um limite determinado 
 
 ## Links
 
-- <a name="deploy-vercel" href="https://youtube-videos-delta.vercel.app/" target="_blank">Deploy</a>
+- <a name="deploy-vercel" href="https://youtube-videos-sergioothoniel.vercel.app/" target="_blank">Deploy</a>
 - <a name="repository" href="https://github.com/sergioothoniel/youtube-videos" target="_blank">Repositório</a>
 
 <br />
